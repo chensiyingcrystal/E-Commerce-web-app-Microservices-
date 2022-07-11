@@ -102,12 +102,6 @@ This section lists any major frameworks/libraries/databases that I use to build 
 add a transaction service that records all transactions along with a database that stores
 all transactions. 
 
-## Future Plan
-
-
-
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -132,9 +126,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Siying Chen - [@MyLinkedIn](https://www.linkedin.com/in/siyingchencrystal/)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [github](https://github.com/chensiyingcrystal/E-Commerce-web-app-Microservices-)
 
 
 
