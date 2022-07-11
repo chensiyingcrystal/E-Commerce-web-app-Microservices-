@@ -14,9 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
-  </a>
+  <img src="images/logo.jpg" alt="Logo" width="280" height="280">
 
   <h3 align="center">E-Commerce App(Microservices)</h3>
 
