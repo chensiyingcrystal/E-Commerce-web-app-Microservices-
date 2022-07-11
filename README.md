@@ -127,7 +127,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Siying Chen - [@MyLinkedIn](https://www.linkedin.com/in/siyingchencrystal/)
 
-Project Link: [github](https://github.com/chensiyingcrystal/E-Commerce-web-app-Microservices-)
+Project Link: [E-Commerce-web-app-Microservices-](https://github.com/chensiyingcrystal/E-Commerce-web-app-Microservices-)
 
 
 
