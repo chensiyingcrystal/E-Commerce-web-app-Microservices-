@@ -71,13 +71,13 @@ This section lists any major frameworks/libraries/databases that I use to build 
 
 ### Features
 * Event-Based Architecture: event bus not need many router trips.
- * Communicate data between services using a lightning-fast event bus.
- * Document and enforce structure constraints on events shared across microservices.
- * Using a Load Balancer with the  Ingress-NGINX Controller on Google Cloud.
+  * Communicate data between services using a lightning-fast event bus.
+  * Document and enforce structure constraints on events shared across microservices.
+  * Using a Load Balancer with the  Ingress-NGINX Controller on Google Cloud.
 * Build a Server-Side Rendered React App to render data from microservices using Hooks and Next JS.
 * Deploy a multi-service app to the cloud with Docker and Kubernetes.
- * run a development environment(run a k8s development cluster and develop on it) through a cloud provider.
- * Configure(deploy) and scale services using Kubernetes Deployments; Orchestrating collections of services with Kubernetes.
+  * run a development environment(run a k8s development cluster and develop on it) through a cloud provider.
+  * Configure(deploy) and scale services using Kubernetes Deployments; Orchestrating collections of services with Kubernetes.
 * Facilitate workflows using Skaffold in Kubernetes dev environment.
 * Solve concurrency issues in a distributed systems environment.
 
