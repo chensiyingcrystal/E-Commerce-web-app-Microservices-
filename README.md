@@ -53,9 +53,9 @@ However, it also has some major issues around it. From challenges with data repl
 
 This project's intuition comes from a ticket selling website, Stubhub and implements part of its features based on microservice architechture. Beyond focusing on the basics of microservices, this program is also a full-stack development: from the frontend, assembling a React app using Hooks, to the backend, including database design and deployment strategies.
 
-<p>**Services**
-  <img src="images/diagram1.jpey" alt="diagram-services" width="300" height="250">
-</p>
+**Services**
+  <img src="images/diagram1.jpeg" alt="diagram-services" width="300" height="250">
+
 
 ### Functionality
 Built a large, multi-services app for tickets exchange and resale. It provides services for buyers/resellers to register, buy tickets with credit cards, list and resell tickets.
