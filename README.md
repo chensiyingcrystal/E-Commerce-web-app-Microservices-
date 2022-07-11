@@ -53,6 +53,10 @@ However, it also has some major issues around it. From challenges with data repl
 
 This project's intuition comes from a ticket selling website, Stubhub and implements part of its features based on microservice architechture. Beyond focusing on the basics of microservices, this program is also a full-stack development: from the frontend, assembling a React app using Hooks, to the backend, including database design and deployment strategies.
 
+<p>**Services**
+  <img src="images/diagram1.jpey" alt="diagram-services" width="300" height="250">
+</p>
+
 ### Functionality
 Built a large, multi-services app for tickets exchange and resale. It provides services for buyers/resellers to register, buy tickets with credit cards, list and resell tickets.
 
@@ -82,14 +86,12 @@ This section lists any major frameworks/libraries/databases that I use to build 
 * Solve concurrency issues in a distributed systems environment.
 
 
-
-<!-- GETTING STARTED -->
-## Getting Started
+## Challenges
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+## Future Plan
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
@@ -97,37 +99,7 @@ This is an example of how to list things you need to use the software and how to
 npm install npm@latest -g
 ```
 
-### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-```sh
-git clone https://github.com/your_username_/Project-Name.git
-```
-3. Install NPM packages
-```sh
-npm install
-```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
 
 
 
