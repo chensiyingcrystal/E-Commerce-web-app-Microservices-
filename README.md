@@ -32,15 +32,14 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
+* [Description](#decription)
+* [Technologies](#technologies)
+* [Framework](#framework)
+* [Features](#features)
+* [Challenges](#challenges)
+* [Future plan](#plan)
 * [Contributing](#contributing)
-* [License](#license)
+* [License](#license) 
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
