@@ -37,7 +37,6 @@
   * [Technologies](#technologies)
   * [Features](#features)
 * [Challenges](#challenges)
-* [Future plan](#plan)
 * [Contributing](#contributing)
 * [License](#license) 
 * [Contact](#contact)
