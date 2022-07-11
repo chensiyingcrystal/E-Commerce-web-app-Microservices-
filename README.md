@@ -33,8 +33,8 @@
 ## Table of Contents
 
 * [Description](#decription)
+  * [Functionalities](#functionalities)
   * [Technologies](#technologies)
-  * [Framework](#framework)
   * [Features](#features)
 * [Challenges](#challenges)
 * [Future plan](#plan)
@@ -46,7 +46,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Description
 
 Microservices grow popular since it allows rapid, frequent and reliable delivery of large, complex application.
 However, it also has some major issues around it. From challenges with data replication to confusing unordered event streams, every major challenge of building microservices is worth exploring. 
@@ -56,8 +56,8 @@ This project's intuition comes from a ticket selling website, Stubhub and implem
 ### Functionality
 Built a large, multi-services app for tickets exchange and resale. It provides services for buyers/resellers to register, buy tickets with credit cards, list and resell tickets.
 
-### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+### Technologies
+This section lists any major frameworks/libraries/databases that I use to build the app. 
 * [Docker](https://www.docker.com/)
 * [Kubernetes](https://kubernetes.io/)
 * [React](https://reactjs.org/)
@@ -68,6 +68,18 @@ This section should list any major frameworks that you built your project using.
 * [Redis](https://redis.io/)
 * [Skaffold](https://skaffold.dev/)
 * [NATS](https://docs.nats.io/legacy/stan/intro)
+
+### Features
+* Event-Based Architecture: event bus not need many router trips.
+ * Communicate data between services using a lightning-fast event bus.
+ * Document and enforce structure constraints on events shared across microservices.
+ * Using a Load Balancer with the  Ingress-NGINX Controller on Google Cloud.
+* Build a Server-Side Rendered React App to render data from microservices using Hooks and Next JS.
+* Deploy a multi-service app to the cloud with Docker and Kubernetes.
+ * run a development environment(run a k8s development cluster and develop on it) through a cloud provider.
+ * Configure(deploy) and scale services using Kubernetes Deployments; Orchestrating collections of services with Kubernetes.
+* Facilitate workflows using Skaffold in Kubernetes dev environment.
+* Solve concurrency issues in a distributed systems environment.
 
 
 
