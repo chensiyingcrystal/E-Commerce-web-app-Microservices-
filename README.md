@@ -95,9 +95,12 @@ This section lists any major frameworks/libraries/databases that I use to build 
 
 
 ## Challenges
+**Concurrency issues**: may run into the same event service twice.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+**Solution**:
+
+add a transaction service that records all transactions along with a database that stores
+all transactions. 
 
 ## Future Plan
 
