@@ -14,21 +14,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="images/logo.jpg" alt="Logo" width="280" height="280">
+  <img src="images/logo.jpg" alt="Logo" width="300" height="250">
 
   <h3 align="center">E-Commerce App(Microservices)</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    An multi-service app for reselling and exchanging tickets. 
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <br />
+    <a href="">View Demo</a>
   </p>
 </p>
 
