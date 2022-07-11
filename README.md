@@ -54,7 +54,7 @@ However, it also has some major issues around it. From challenges with data repl
 This project's intuition comes from a ticket selling website, Stubhub and implements part of its features based on microservice architechture. Beyond focusing on the basics of microservices, this program is also a full-stack development: from the frontend, assembling a React app using Hooks, to the backend, including database design and deployment strategies.
 
 **Services**
-  <img src="images/diagram1.jpeg" alt="diagram-services" width="300" height="250">
+  <img src="images/diagram1.jpeg" alt="diagram-services" width="350" height="250">
 
 
 ### Functionality
