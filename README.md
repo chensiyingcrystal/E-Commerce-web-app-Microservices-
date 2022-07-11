@@ -57,12 +57,12 @@ This project's intuition comes from a ticket selling website, Stubhub and implem
 <br />
 **Services**
 <br />
-  <img src="images/diagram1.jpeg" alt="diagram-services" width="5000" height="2500">
+  <img src="images/diagram1.jpeg" alt="diagram-services" width="500" height="250">
 
 <br />
 **Events and Architecture Design**
 <br />
-  <img src="images/diagram2.jpeg" alt="events-design" width="5000" height="250">
+  <img src="images/diagram2.jpeg" alt="events-design" width="500" height="250">
 
 
 ### Functionality
