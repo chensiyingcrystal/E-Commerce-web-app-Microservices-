@@ -6,6 +6,10 @@ const app = express();
 //without json, we cannot use req.body
 app.use(json());
 
+app.get('/api/users/currentuser', (req, res) => {
+    res.send('hello there');
+});
+
 app.listen(3000, () => {
-    console.log('Listening on port 3000!!!');
+    console.log('Chensiying is Listening on port 3000!!!');
 });
