@@ -9,6 +9,20 @@ interface UserAttrs {
     password: string;
 }
 
+//tell typescript there's a build function
+//an interface that describes the propersties
+//that a User model has 
+interface UserModel extends mongoose.Model<UserDoc> {
+    build(attrs: UserAttrs): UserDoc;
+}
+
+//an interface that describes the properties
+//that a user document(a single user) has
+interface UserDoc extends mongoose.Document {
+    email: string;
+    password: string;
+}
+
 
 //schema: what properties
 const userSchema = new mongoose.Schema({
@@ -21,13 +35,23 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 });
-//model: how to access
-const User = mongoose.model('User', userSchema);
-//do typescript checking with user capsulated inside build user
-const buildUser = (attrs: UserAttrs) => {
+//type script don't understand this
+userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };
 
+//model: how to access
+const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
+//do typescript checking with user capsulated inside build user
+//improvement: get buildUser as a method inside User
+//advantage: don't need to remember a separate function when building a new user
+// const buildUser = (attrs: UserAttrs) => {
+//     return new User(attrs);
+// };
 
+const user = User.build({
+    email: "test@test.com",
+    password: "123456"
+})
 
 export { User };
