@@ -12,10 +12,14 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
+app.set('trust proxy', true); 
 //use json middleware to parse json from incoming request
 //without json, we cannot use req.body
 app.use(json());
-
+app.use(cookieSession({
+    signed: false, //ban signing
+    secure: true //require https connection
+}))
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);

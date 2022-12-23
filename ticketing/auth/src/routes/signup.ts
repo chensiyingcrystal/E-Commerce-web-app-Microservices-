@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import jwt from 'jsonwebtoken';
 import { User } from '../models/user';
 import { RequestValidationError } from '../errors/request-validation-error';
 import { BadRequestError } from '../errors/bad-request-error';
@@ -32,6 +33,17 @@ async (req: Request, res: Response) => {
 
     //save user to db
     await user.save();
+
+    //generate JWT
+    const userJwt = jwt.sign({
+        id: user.id,
+        email: user.email
+    }, 'asdf');
+
+    //store it on session object of req
+    req.session = {
+        jwt: userJwt
+    };
 
     res.status(201).send(user);
 
