@@ -1,5 +1,6 @@
 //define mongoose user model
 import mongoose from "mongoose";
+import { Password } from "../services/password";
 
 //let typescript help us check properties
 //an interface that describes the properties
@@ -35,6 +36,17 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 });
+//a middleware function in mongoose
+//called everytime we want to save a user into database
+userSchema.pre('save', async function (done) {
+    if (this.isModified('password')) {
+        const ps = <string>(this.get('password'));
+        const hashed = await Password.toHash(ps);
+        this.set('password', hashed);
+    }
+    done();
+
+});
 //type script don't understand this
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
@@ -48,10 +60,5 @@ const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 // const buildUser = (attrs: UserAttrs) => {
 //     return new User(attrs);
 // };
-
-const user = User.build({
-    email: "test@test.com",
-    password: "123456"
-})
 
 export { User };
