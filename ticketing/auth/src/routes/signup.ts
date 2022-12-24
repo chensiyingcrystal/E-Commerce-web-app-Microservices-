@@ -38,7 +38,10 @@ async (req: Request, res: Response) => {
     const userJwt = jwt.sign({
         id: user.id,
         email: user.email
-    }, 'asdf');
+    }, process.env.JWT_KEY!);
+    //the ! above tells typescript that 
+    //we can guarantee that we have checked that 
+    //jwt key has been defined; 
 
     //store it on session object of req
     req.session = {
