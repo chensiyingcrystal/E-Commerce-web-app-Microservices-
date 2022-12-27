@@ -18,8 +18,8 @@ app.set('trust proxy', true);
 app.use(json());
 app.use(cookieSession({
     signed: false, //ban signing
-    secure: true //require https connection
-}))
+    secure: process.env.NODE_ENV !== 'test' //require https connection
+}));
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
