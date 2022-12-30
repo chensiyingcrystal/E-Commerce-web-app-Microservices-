@@ -3,9 +3,9 @@ import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import { Password } from '../services/password';
 import { User } from '../models/user';
-import { validateRequest } from '../models/validate-request';
+import { validateRequest } from '@crystaltickets/common';
 import { Request, Response } from 'express';
-import { BadRequestError } from '../errors/bad-request-error';
+import { BadRequestError } from '@crystaltickets/common';
 
 const router = express.Router();
 

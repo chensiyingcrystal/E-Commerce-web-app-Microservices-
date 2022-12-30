@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import { validateRequest } from '../models/validate-request';
+import { validateRequest } from '@crystaltickets/common';
 import { User } from '../models/user';
-import { BadRequestError } from '../errors/bad-request-error';
+import { BadRequestError } from '@crystaltickets/common';
 
 const router = express.Router();
 
