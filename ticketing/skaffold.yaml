@@ -27,4 +27,12 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
+    - image: chensiyingcrystal/tickets
+      context: tickets
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
 
