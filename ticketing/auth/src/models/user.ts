@@ -13,6 +13,7 @@ interface UserAttrs {
 //tell typescript there's a build function
 //an interface that describes the propersties
 //that a User model has 
+//model represents the entire collection of data
 interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc;
 }
@@ -25,7 +26,7 @@ interface UserDoc extends mongoose.Document {
 }
 
 
-//schema: what properties
+//schema: list what properties inside
 const userSchema = new mongoose.Schema({
     email: {
         type: String, 
@@ -37,6 +38,7 @@ const userSchema = new mongoose.Schema({
     } 
 }, {
     toJSON: {
+        //define how to represent these data in JSON
         transform(doc, ret) {
             ret.id = ret._id;
             delete ret._id;
@@ -46,7 +48,7 @@ const userSchema = new mongoose.Schema({
         }
     }
 });
-//a middleware function in mongoose
+//a middleware function in mongoose for password hash
 //called everytime we want to save a user into database
 userSchema.pre('save', async function (done) {
     if (this.isModified('password')) {
@@ -58,11 +60,14 @@ userSchema.pre('save', async function (done) {
 
 });
 //type script don't understand this
+//allow typescript to validate the properties when we
+//build a new user
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };
 
 //model: how to access
+//create the model
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 //do typescript checking with user capsulated inside build user
 //improvement: get buildUser as a method inside User

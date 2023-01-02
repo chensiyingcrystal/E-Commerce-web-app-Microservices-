@@ -4,19 +4,24 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler } from '@crystaltickets/common';
 import { NotFoundError } from '@crystaltickets/common';
+import { currentUser } from '@crystaltickets/common';
+import { createTicketRouter } from './routes/create-new-tickets';
 
 const app = express();
 app.set('trust proxy', true); 
 //use json middleware to parse json from incoming request
 //without json, we cannot use req.body
 app.use(json());
+//check the cookie and set req.session property
 app.use(cookieSession({
     signed: false, //ban signing
     secure: process.env.NODE_ENV !== 'test' //require https connection
 }));
+app.use(currentUser); //for each request into our app we will check its currentuser
+app.use(createTicketRouter);
 
 app.all('*', async () => {
-    console.log('chensiying debug...');
+    //404 error code
     throw new NotFoundError();
 });
 
