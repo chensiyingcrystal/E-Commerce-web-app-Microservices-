@@ -48,9 +48,10 @@ global.signin = () => {
 
   // return cookie;
 
+  //skip saving the email and password into the database
   //build a JWT payload ({ id, email})
   const payload = {
-    id: "1lk24kjdksl",
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: 'test@test.com'
   };
 
