@@ -44,7 +44,7 @@ const ticketSchema = new mongoose.Schema({
     }
 });
 
-ticketSchema.statics.build = (attrs: TicketAttrs) {
+ticketSchema.statics.build = (attrs: TicketAttrs) => {
     return new Ticket(attrs);
 };
 
@@ -52,3 +52,5 @@ ticketSchema.statics.build = (attrs: TicketAttrs) {
 //first: name for the collection; second: schema
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 
+//used for save and retrieve data
+export { Ticket };

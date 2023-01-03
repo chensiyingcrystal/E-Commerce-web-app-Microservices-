@@ -6,6 +6,7 @@ import { errorHandler } from '@crystaltickets/common';
 import { NotFoundError } from '@crystaltickets/common';
 import { currentUser } from '@crystaltickets/common';
 import { createTicketRouter } from './routes/create-new-tickets';
+import { showTicketRouter } from './routes/show-tickets';
 
 const app = express();
 app.set('trust proxy', true); 
@@ -19,6 +20,7 @@ app.use(cookieSession({
 }));
 app.use(currentUser); //for each request into our app we will check its currentuser
 app.use(createTicketRouter);
+app.use(showTicketRouter);
 
 app.all('*', async () => {
     //404 error code
