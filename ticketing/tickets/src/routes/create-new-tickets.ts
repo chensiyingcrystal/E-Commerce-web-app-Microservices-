@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requireAuth, validateRequest } from '@crystaltickets/common';
 import { Ticket } from '../model/tickets';
+import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
 
 const router = express.Router();
 
@@ -19,6 +20,14 @@ router.post('/api/tickets', requireAuth, [
         userId: req.currentUser!.id //tell tp that currentUser is guaranteed to be defined
     });
     await ticket.save();
+
+    //publish a event
+    new TicketCreatedPublisher(client).publish({
+        id: ticket.id,
+        title: ticket.title,
+        price: ticket.price,
+        userId: ticket.userId
+    });
 
     res.status(201).send(ticket);
 
