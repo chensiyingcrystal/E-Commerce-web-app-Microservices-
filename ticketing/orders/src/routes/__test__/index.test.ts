@@ -13,7 +13,6 @@ const buildTicket = async () => {
   return ticket;
 };
 
-
 it('fetches orders for an particular user', async () => {
   // Create three tickets
   const ticketOne = await buildTicket();
