@@ -3,6 +3,7 @@ import { OrderStatus } from '@crystaltickets/common';
 import { Order } from './order';
 
 interface TicketAttrs {
+    id: string;
     title: string;
     price: number;
 }
@@ -37,7 +38,14 @@ const ticketSchema = new mongoose.Schema({
 });
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
-    return new Ticket(attrs);
+    //instead of assigning attrs, we need to pass it one by one
+    //so that we will not automatically generate a random Id
+    //we want ticket _id is copyed from the id property
+    return new Ticket({
+        _id: attrs.id,
+        title: attrs.title,
+        price: attrs.price,
+    });
 };
 
 ticketSchema.methods.isReserved = async function() {
