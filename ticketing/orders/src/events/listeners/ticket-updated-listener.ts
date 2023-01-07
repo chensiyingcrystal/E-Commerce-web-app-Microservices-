@@ -9,7 +9,8 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
 //first arg: data from inside our event, second arg: message from nats server(underlying property and built-in property)
     async onMessage(data: TicketUpdatedEvent['data'], msg: Message) {
         //find our ticket, update it using updated ticket
-        const ticket = await Ticket.findById(data.id);
+        //check version matches
+        const ticket = await Ticket.findByEvent(data);
 
         if (!ticket) {
             throw new Error('Ticket not found');
