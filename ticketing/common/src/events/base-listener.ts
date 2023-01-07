@@ -12,7 +12,7 @@ export abstract class Listener<T extends Event> {
     abstract subject: T['subject'];
     abstract onMessage(data: T['data'], msg: Message): void;
     abstract queueGroupName: string;
-    private client: Stan;
+    protected client: Stan;
     //time for this subscriber to ack a message
     protected ackWait = 5 * 1000; //5s
   

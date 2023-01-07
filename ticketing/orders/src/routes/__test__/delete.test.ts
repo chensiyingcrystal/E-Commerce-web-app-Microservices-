@@ -4,10 +4,12 @@ import { Ticket } from '../../models/ticket';
 import { Order } from '../../models/order';
 import { OrderStatus } from '@crystaltickets/common';
 import { natsWrapper } from '../../nats-wrapper';
+import mongoose from 'mongoose';
 
 it('marks an order as cancelled', async () => {
   // create a ticket with Ticket Model
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 20,
   });
