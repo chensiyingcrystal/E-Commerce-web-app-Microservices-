@@ -5,7 +5,8 @@ import {
     validateRequest,
     NotFoundError, 
     requireAuth,
-    NotAuthroizedError
+    NotAuthroizedError,
+    BadRequestError
 } from '@crystaltickets/common';
 import { Ticket } from '../model/tickets';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
@@ -24,6 +25,10 @@ async (req: Request, res: Response) => {
 
     if (!ticket) {
         throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+        throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     if (ticket.userId !== req.currentUser!.id) {
