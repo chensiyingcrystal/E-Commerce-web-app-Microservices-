@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: expiration
-          image: chensiyingcrystal/expiration
+          image: chensiyingcrystal/dockerhub:expiration
           env:
           # look at the pod name and provide it as the client id
             - name: NATS_CLIENT_ID 
