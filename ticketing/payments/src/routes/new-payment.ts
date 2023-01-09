@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requireAuth, validateRequest, BadRequestError, NotFoundError, NotAuthroizedError, OrderStatus } from '@crystaltickets/common';
 import { Order } from '../models/order';
+import { stripe } from '../stripe';
+import { Payment } from '../models/payment';
 
 const router = express.Router();
 
@@ -25,7 +27,22 @@ router.post('/api/payments', requireAuth, [
         throw new BadRequestError('Order already cancelled');
     }
 
-    res.status(201).send(order);
+    const charge = await stripe.charges.create({
+        amount: order.price * 100,
+        currency: 'usd',
+        source: token, // a token coming into our request handler
+    });
+    //build a payment object for future search
+    const payment = Payment.build({
+        orderId, 
+        stripeId: charge.id,
+    });
+    await payment.save();
+
+    //emit an event: successfully finish a payment
+
+
+    res.send({ success: true });
 
 });
 
