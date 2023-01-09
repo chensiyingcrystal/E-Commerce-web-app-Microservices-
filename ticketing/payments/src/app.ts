@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 import { errorHandler } from '@crystaltickets/common';
 import { NotFoundError } from '@crystaltickets/common';
 import { currentUser } from '@crystaltickets/common';
+import { createChargeRouter } from './routes/new-payment';
 
 const app = express();
 app.set('trust proxy', true); 
@@ -17,6 +18,7 @@ app.use(cookieSession({
     secure: process.env.NODE_ENV !== 'test' //require https connection
 }));
 app.use(currentUser); //for each request into our app we will check its currentuser
+app.use(createChargeRouter);
 
 app.all('*', async () => {
     //404 error code
