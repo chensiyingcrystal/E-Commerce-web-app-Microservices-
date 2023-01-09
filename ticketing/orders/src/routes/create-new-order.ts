@@ -29,9 +29,11 @@ router.post('/api/orders', requireAuth, [
     if (isReserved) {
         throw new BadRequestError('Ticket is already reserved');;
     }
+
     //calculate the expiration date for the order
     const expiration = new Date();
     expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS)
+    console.log('Siying debug 11', expiration);
 
     //build the order and save it to the database
     const order = Order.build({
@@ -40,6 +42,8 @@ router.post('/api/orders', requireAuth, [
         expiresAt: expiration,
         ticket: ticket
     });
+    //force to set expiresAt
+    order.expiresAt = expiration; 
     await order.save();
 
     //publish an event saying that an order was created
@@ -48,7 +52,7 @@ router.post('/api/orders', requireAuth, [
         version: order.version,
         status: order.status,
         userId: order.userId,
-        expiresAt: order.expiresAt.toISOString(), //utc time form
+        expiresAt: order.expiresAt?.toISOString(), //utc time form
         ticket: {
             id: ticket.id,
             price: ticket.price,
