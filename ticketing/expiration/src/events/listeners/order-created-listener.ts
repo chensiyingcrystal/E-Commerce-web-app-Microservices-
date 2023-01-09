@@ -13,9 +13,11 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         //create a new job and queue it up
         await expirationQueue.add({
             orderId: data.id
-        }, {
+        }, 
+        {
             delay: delay
-        });
+        }
+        );
 
         msg.ack();
     }

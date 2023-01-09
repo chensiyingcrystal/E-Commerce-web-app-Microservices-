@@ -1,4 +1,6 @@
 import Queue from 'bull';
+import { ExpirationCompletePublisher } from '../events/publishers/expiration-complete-publisher';
+import { natsWrapper } from '../nats-wrapper';
 //define property in the job(a javascript object)
 //use this to let typescript to better check what
 //right info needs to be put in the job
@@ -15,8 +17,9 @@ const expirationQueue = new Queue<Payload>('order:expiration', {
 //when redis send back job to us
 //we need to process it then publish event(expiration complete)
 expirationQueue.process(async( job ) => {
-    console.log('I want to publish an expiration:complete event for orderId', 
-        job.data.orderId);
+    new ExpirationCompletePublisher(natsWrapper.client).publish({
+        orderId: job.data.orderId,
+    });
 
 });
 

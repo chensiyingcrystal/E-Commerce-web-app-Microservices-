@@ -33,7 +33,6 @@ router.post('/api/orders', requireAuth, [
     //calculate the expiration date for the order
     const expiration = new Date();
     expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS)
-    console.log('Siying debug 11', expiration);
 
     //build the order and save it to the database
     const order = Order.build({
