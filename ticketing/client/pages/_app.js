@@ -7,7 +7,7 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
     return (
         <div>
             <Header currentUser={currentUser}/>
-            <Component {...pageProps} />
+            <Component currentUser={currentUser} {...pageProps} /> 
         </div>
         );
 };
@@ -19,11 +19,11 @@ AppComponent.getInitialProps = async (appContext) => {
     let pageProps = {};
     if (appContext.Component.getInitialProps) {
     //manually call the getInitialProps of the landing page
-        pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+        pageProps = await appContext.Component.getInitialProps(appContext.ctx, client, data.currentUser);
     }
 
     return {
-        pageProps,
+        pageProps, //pass the pageProp to the landing page component
         currentUser: data.currentUser
     }
 
