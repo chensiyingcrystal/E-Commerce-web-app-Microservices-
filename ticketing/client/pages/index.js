@@ -1,4 +1,5 @@
 // import buildClient from '../api/build-client';
+import Link from "next/link";
 
 const landing = ({ currentUser, tickets }) => {
     //making request from the browser
@@ -13,6 +14,11 @@ const landing = ({ currentUser, tickets }) => {
             <tr key={ticket.id}>
                 <td>{ticket.title}</td>
                 <td>{ticket.price}</td>
+                <td>
+                    <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} legacyBehavior>
+                        <a>View</a>
+                    </Link>
+                </td>
             </tr>
         )
     });
@@ -25,6 +31,7 @@ const landing = ({ currentUser, tickets }) => {
                     <tr>
                         <th>Title</th>
                         <th>Price</th>
+                        <th>Link</th>
                     </tr>
                 </thead>
                 <tbody>
