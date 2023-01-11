@@ -9,7 +9,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 60;
 
 router.post('/api/orders', requireAuth, [
     body('ticketId').not().isEmpty().custom((input: string) => mongoose.Types.ObjectId.isValid(input)) //a valid ticket id
@@ -51,7 +51,7 @@ router.post('/api/orders', requireAuth, [
         version: order.version,
         status: order.status,
         userId: order.userId,
-        expiresAt: order.expiresAt?.toISOString(), //utc time form
+        expiresAt: order.expiresAt.toISOString(), //utc time form
         ticket: {
             id: ticket.id,
             price: ticket.price,
