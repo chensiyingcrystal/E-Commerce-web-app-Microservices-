@@ -3,11 +3,13 @@ import { useState } from 'react';
 
 const useRequest = ({ url, method, body, onSuccess }) => {
     const [errors, setErrors] = useState(null);
-
-    const doRequest = async () => {
+//default props: empty object
+//need to pass: payment(passing in token)
+    const doRequest = async (props = {}) => {
         try {
             setErrors(null);
-            const response = await axios[method](url, body);
+            const response = await axios[method](url, 
+                {...body, ...props}); //... are called spread attributes which, as the name represents, it allows an expression to be expanded.
             
             if (onSuccess) {
                 onSuccess(response.data);
