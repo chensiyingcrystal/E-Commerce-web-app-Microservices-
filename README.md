@@ -1,5 +1,5 @@
-# crystalInstacart
-An android mobile app implementing part of the instacart driver app features.
+# E-Commerce web app (Microservices): Ticketing application
+A ticket exchange and resale application, enabling buyers and resellers to register, log in, purchase tickets using credit cards, and list tickets for resale.
 
 ## Screenshots
 
