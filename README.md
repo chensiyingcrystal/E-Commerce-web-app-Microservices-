@@ -1,4 +1,4 @@
-# E-Commerce web app (Microservices): Ticketing application
+# Ticketing Web Application (Microservices) 
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -74,6 +74,7 @@ skaffold dev
 <div>
     <img src="diagrams/architecture.png" >
 </div>
+
 ### Services
 
 ### Event-driven 
