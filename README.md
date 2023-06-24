@@ -65,12 +65,15 @@ cd ticketing
 skaffold dev
 ```
 4. Open the browser 
-* Navigate to "https://ticketing.dev/"(remember to add local DNS at your local etc/hosts file "127.0.0.1 ticketing.dev")
+* Navigate to "https://ticketing.dev/"
+(remember to add local DNS at your local etc/hosts file "127.0.0.1 ticketing.dev")
 * type "thisisunsafe" in the browser window with security warning.
 
 <!-- Architecture -->
 ## Architecture
-
+<div>
+    <img src="diagrams/architecture.png" >
+</div>
 ### Services
 
 ### Event-driven 
