@@ -32,7 +32,7 @@ spec:
   selector: 
     app: auth
   ports:
-    - name: auth
+    - name: tcp-auth
       protocol: TCP
       port: 3000
       targetPort: 3000

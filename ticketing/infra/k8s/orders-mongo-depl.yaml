@@ -24,7 +24,7 @@ spec:
   selector:
     app: orders-mongo
   ports:
-    - name: db
+    - name: tcp-db
       protocol: TCP
       port: 27017
       targetPort: 27017

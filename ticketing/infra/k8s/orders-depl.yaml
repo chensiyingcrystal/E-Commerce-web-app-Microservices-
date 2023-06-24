@@ -41,7 +41,7 @@ spec:
   selector: 
     app: orders
   ports:
-    - name: orders
+    - name: tcp-orders
       protocol: TCP
       port: 3000
       targetPort: 3000

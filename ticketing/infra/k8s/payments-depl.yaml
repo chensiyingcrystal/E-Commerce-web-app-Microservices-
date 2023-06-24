@@ -46,7 +46,7 @@ spec:
   selector: 
     app: payments
   ports:
-    - name: payments
+    - name: tcp-payments
       protocol: TCP
       port: 3000
       targetPort: 3000
