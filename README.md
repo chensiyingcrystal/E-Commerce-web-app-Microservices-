@@ -1,104 +1,100 @@
 # E-Commerce web app (Microservices): Ticketing application
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+* [About the App](#about-the-app)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Run the app](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE APP -->
+## About The App
 A ticket exchange and resale application, enabling buyers and resellers to register, log in, purchase tickets using credit cards, and list tickets for resale.
 
-## Screenshots
+### Built With
+Major frameworks/Libraries/Database/Tools that this application uses. 
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Laravel](https://laravel.com)
 
-<p float="left">
-<img src="screenshots/screenshot1.png" width=50% height=50% />
-<img src="screenshots/screenshot2.png" width=50% height=50% />
-</p>
+<!-- GETTING STARTED -->
+## Getting Started
 
-<p float="left">
-<img src="screenshots/screenshot3.png" width=50% height=50% />
-<img src="screenshots/screenshot4.png" width=50% height=50% />
-<img src="screenshots/screenshot5.png" width=50% height=50% />
-</p>
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-## Features
-Key functionalities include:
-* account registration and login
-* location update and render it on the map
-* location search and autocomplete
-* route planning and simulate driver delivery
+### Prerequisites
 
-### App scaffolding
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+```sh
+npm install npm@latest -g
+```
 
-Activity: HomeMapActivity, MainActivity
-Fragment: LoginFragment, HomeFragment
+### Run the app
 
-## Workflow: 
-driver register/login -> automatically locate on the map -> search bar, autocomplete -> route planning
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+```sh
+git clone https://github.com/your_username_/Project-Name.git
+```
+3. Install NPM packages
+```sh
+npm install
+```
+4. Enter your API in `config.js`
+```JS
+const API_KEY = 'ENTER YOUR API';
+```
 
-## UI design:
-Building UI in activities/fragments using navigation graph, followed material design.
+<!-- Architecture -->
+### Overview
 
-[`MainActivity`][1] is the application's entry point. Each screen is implemented inside a `Fragment`.
-The navigation between them uses the [Navigation Graph][2]. The navigation is defined in [`nav_graph.xml`][3].
-Using navigation graph can reduce dependencies and latency when switching between screens.
+### Services
 
-[1]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/MainActivity.kt
-[2]: https://developer.android.com/guide/navigation/get-started
-[3]: app/src/main/res/navigation/nav_graph.xml
+### Event-driven Architecture
 
-### Sign in/sign up
+<!-- Utils -->
+### Server-side rendering with React and Next.js
 
-Implement in [`LoginFragment`][4], uses [`Firebase Realtime Database`][5] to store user auth data
+### Backend services with Node.js and Express
 
-Triggered by 2 buttons:
-* Register
-* Sign in
+### MongoDB and Redis
 
-To get to the sign up screen, tap on "register" and enter an email, password and driver name.
-Then you can tap on "sign in " and enter email and password.
+### Docker and Kubernetes
 
-* Login: firebase auth(sign in/register account）
-* fragment: check if email or phone is empty, password is empty/length < 6
-* firebase connect callback, check if register/login is successful
+### Skaffold
 
-[4]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/login/LoginFragment.kt
-[5]: https://firebase.google.com/docs/database
 
-### Location Realtime Update
 
-Implement in [`HomeMapActivity`][6]
-
-This allows user to fetch and render their realtime location with a marker on the google map when they successfully sign in.
-And this location will keep updated within 5s intervals.
-
-* location fetching: GMS Fused location provider
-* Start location update/stop update(start listening to location)
-* GetLastlocation(update latest location on map activity)
-
-[6]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/home/HomeMapActivity.kt
-
-### Location Search and AutoComplete
-
-Implement in [`HomeMapActivity`][7]
-
-This allows user to search any location in the search bar, and a set of options will be listed automatically.
-User can tap on any location in the list, triggering the driver going to this destination.
-This feature uses [`Google Place Autocomplete API][8].
-
-[7]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/home/HomeMapActivity.kt
-[8]: https://developers.google.com/maps/documentation/places/web-service/autocomplete
-
-### Route planning and motion simulation
-
-Implement in [`HomeMapActivity`][9] and [`location module`][10]
-
-This allows user to plan the route between the current location and the destination.
-A moving car will simulate driving along this route to complete delivery.
-This module uses [`retrofit`] to implement HTTP request,
-
-* once a place is selected in the last step, it will trigger function: getdirection(implement http request using retrofit) 
-* using response(generated path) to draw route and draw moving car
-
-[9]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/home/HomeMapActivity.kt
-[10]: app/src/main/java/com/chensiyingcrystal/crystalinstacart/location
-[11]: https://square.github.io/retrofit/
-
-### Hilt Dependency Injection
-All classes manage dependencies using [`Hilt`][12] to maintain/inject instance in right lifecycle.
-
-[12]: https://developer.android.com/training/dependency-injection/hilt-android#inject-provides
-
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
