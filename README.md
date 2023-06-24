@@ -8,9 +8,13 @@
   * [Prerequisites](#prerequisites)
   * [Run the app](#run-the-app)
 * [Architecture](#architecture)
-  * [Overview](#prerequisites)
-  * [Services](#run-the-app)
-  * [Event-driven Architecture](#event-driven-architecture)
+  * [Services](#services)
+  * [Event-driven](#event-driven)
+* [Tech Stacks](#architecture)
+  * [Frontend](#services)
+  * [Backend](#event-driven)
+  * [Database](#architecture)
+  * [Build And Deploy](#build-and-deploy)
 
 <!-- ABOUT THE APP -->
 ## About The App
@@ -18,81 +22,74 @@ A ticket exchange and resale application, enabling buyers and resellers to regis
 
 ### Built With
 Major frameworks/Libraries/Database/Tools that this application uses. 
-* [React](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [React](https://react.dev/)
+* [Next.js](https://nextjs.org/)
+* [Express](https://expressjs.com/)
+* [Node.js](https://nodejs.org/en)
+* [MongoDB](https://www.mongodb.com/)
+* [Redis](https://redis.io/)
+* [Docker](https://www.docker.com/)
+* [Kubernetes](https://kubernetes.io/)
+* [Ingress-Nginx](https://docs.nginx.com/nginx-ingress-controller/)
+* [NATS Streaming Server](https://nats.io/)
+* [Skaffold](https://skaffold.dev/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+set up locally by running follow steps.
 
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+Install the following:
+* ingress-nginx
+* kubectl
+* docker
+* skaffold
 
 ### Run the app
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/chensiyingcrystal/E-Commerce-web-app-Microservices-.git
+```
+2. Create secretes for JWT keys and Stripe Keys(from [stripe.com]) and update them in corresponding files
+```sh
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+```
+```sh
+kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<STRIPE_SECRET_KEY>
 ```
 3. Install NPM packages
 ```sh
-npm install
+cd ticketing
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
+```sh
+skaffold dev
 ```
+4. Open the browser 
+* Navigate to "https://ticketing.dev/"(remember to add local DNS at your local etc/hosts file "127.0.0.1 ticketing.dev")
+* type "thisisunsafe" in the browser window with security warning.
 
 <!-- Architecture -->
-### Overview
+## Architecture
 
 ### Services
 
-### Event-driven Architecture
+### Event-driven 
 
-<!-- Utils -->
-### Server-side rendering with React and Next.js
+<!-- Tech Stacks -->
+## Tech Stacks
 
-### Backend services with Node.js and Express
-
-### MongoDB and Redis
-
-### Docker and Kubernetes
-
-### Skaffold
+### Frontend
+Server-side rendering with React and Next.js
+### Backend
+with Node.js and Express
+### Database
+MongoDB and Redis
+### Build & Deploy
+Docker and Kubernetes
+Skaffold
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[stripe.com]: https://stripe.com/
+
