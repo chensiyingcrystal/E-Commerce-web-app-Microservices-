@@ -6,13 +6,11 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Run the app](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+  * [Run the app](#run-the-app)
+* [Architecture](#architecture)
+  * [Overview](#prerequisites)
+  * [Services](#run-the-app)
+  * [Event-driven Architecture](#event-driven-architecture)
 
 <!-- ABOUT THE APP -->
 ## About The App
@@ -20,7 +18,7 @@ A ticket exchange and resale application, enabling buyers and resellers to regis
 
 ### Built With
 Major frameworks/Libraries/Database/Tools that this application uses. 
-* [Bootstrap](https://getbootstrap.com)
+* [React](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 * [Laravel](https://laravel.com)
 * [Bootstrap](https://getbootstrap.com)
