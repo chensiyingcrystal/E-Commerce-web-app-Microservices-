@@ -4,13 +4,14 @@
 ## Table of Contents
 * [About the App](#about-the-app)
   * [Built With](#built-with)
+  * [Features](#features)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Run the app](#run-the-app)
 * [Architecture](#architecture)
   * [Services](#services)
   * [Event-driven](#event-driven)
-* [Tech Stacks](#architecture)
+* [Technical Stacks](#architecture)
   * [Frontend](#services)
   * [Backend](#event-driven)
   * [Database](#architecture)
@@ -19,6 +20,17 @@
 <!-- ABOUT THE APP -->
 ## About The App
 A ticket exchange and resale application, enabling buyers and resellers to register, log in, purchase tickets using credit cards, and list tickets for resale.
+
+### Features
+* Authentication
+* Event bus design and implementation
+* Authenticated users can list an event ticket for resale
+* Athenticated user can update the tickets they listed
+* Authenticated users can buy tickets posted by others
+* Authenticated users can cancel the order they made
+* Ticket Lock with timer during payment
+    * "Lock" ticket for 15 minutes when user attempts to purchase it
+    * No other buyer can purchase a ticket or seller can update it while being locked
 
 ### Built With
 Major frameworks/Libraries/Database/Tools that this application uses. 
@@ -76,22 +88,28 @@ skaffold dev
 </div>
 
 ### Services
+* Auth: sign in/sign up/sign out; generate JWT for follow-up requests
+* Client: show frontend pages
+* Tickets: create/update/show tickets 
+* Orders: create/cancel/show orders
+* Payments: Handles credit card payments. Cancels orders if payment fails, completes if payment succeeds.
+* Expiration Service: Watched for order to be created. Cancels them after 15 minutes
 
 ### Event-driven 
+Implemented an event-driven architecture with Nats Streaming Server that uses events to trigger and communicate between decoupled services. 
 
-<!-- Tech Stacks -->
-## Tech Stacks
-
+<!-- Technical Stacks -->
+## Technical Stacks
 ### Frontend
 Server-side rendering with React and Next.js
 ### Backend
-with Node.js and Express
+Build with Node.js and Express
 ### Database
-MongoDB and Redis
+Used MongoDB for order/tickets/payments and Redis for expiration service
 ### Build & Deploy
-Docker and Kubernetes
-Skaffold
-
+* Used Docker for running application in containers
+* Used Kubernetes for orchestrating containers
+* Used Skaffold for automate continuous development in Kubernetes cluster
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
