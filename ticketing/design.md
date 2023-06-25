@@ -51,6 +51,22 @@
       * In tickets, auth, order, payments services, app.js file claims to use this middleware
       * Any process throwing an error will be handled gracefully by this middleware
 
+* Sign up workflow
+  * Use JWT to authenticate users for their follow-up requests
+    * JWT payload contains user data encrypted(advantage over session: make server stateless)
+  <div>
+    <img src="../diagrams/design05/8-signup.png" width=80% height=80% >
+  </div>
+
+* Subsequent authentication strategy
+  * option 1: other service communicates with auth service either in sync or async way
+  * option 2: each service hold authentication logic
+  * result: choose option2 because we want other services can independently developed
+  without relying on auth service.
+  * implementation: Extract this part of auth logic into building a require-auth middleware[require-auth] with [current-user] middleware that decodes and parse payload information in the JWT to see whether the user is signed in.
+  <div>
+    <img src="../diagrams/design05/9-otherservices-auth.png" width=80% height=80% >
+  </div>
 
 
 
@@ -64,3 +80,5 @@
 [reference-express-validator]: https://dev.to/nedsoft/a-clean-approach-to-using-express-validator-8go
 [validation-rule]: ticketing/auth/src/routes/signin.ts
 [validate-request]: ticketing/common/src/middlewares/validate-request.ts
+[require-auth]:ticketing/common/src/middlewares/require-auth.ts
+[current-user]:ticketing/common/src/middlewares/current-user.ts
