@@ -80,7 +80,7 @@
   * MongoDB
     * define User model and store user data with Mongoose
 
-## Build frontend with React
+## Build frontend with React and Next.js
 * server side rendering
   <div>
     <img src="../diagrams/design05/13-ssr.png" width=50% height=50% >
@@ -115,6 +115,16 @@
       * this module contains different pages that contains logic to interact with backend.
       * this page will automatically set as handling requests tthat end with the same path name as the file name.(if it's "signin", then the path would be "/signin")
 
+## Tickets Service
+  <div>
+    <img src="../diagrams/design05/17-tickets.png" width=50% height=50% >
+  </div>
+
+  * Generate ticket create and ticket update events, and notify order service
+  
+  * Use Nats Streaming Server to implement the event bus
+    * Run the official 'nats-streaming' docker image in kubernetes.  Need to read the image's docs
+   
 
 
 
@@ -123,6 +133,8 @@
 <div>
   <img src="../diagrams/design05/11-test.png" width=50% height=50% >
 </div>
+
+
 
 
 
