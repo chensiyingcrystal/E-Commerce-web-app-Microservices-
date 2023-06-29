@@ -123,7 +123,12 @@
   * Generate ticket create and ticket update events, and notify order service
   
   * Use Nats Streaming Server to implement the event bus
+    * To communicate with NATS, we will use a client library called **node-nats-streaming**
     * Run the official 'nats-streaming' docker image in kubernetes.  Need to read the image's docs
+    * Pub/Sub pattern
+    <div>
+      <img src="../diagrams/design05/18-nats.png" width=50% height=50% >
+    </div>
    
 
 
