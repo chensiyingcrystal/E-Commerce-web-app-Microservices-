@@ -115,6 +115,11 @@
       * this module contains different pages that contains logic to interact with backend.
       * this page will automatically set as handling requests tthat end with the same path name as the file name.(if it's "signin", then the path would be "/signin")
 
+    * pass props(currentuser, etc.) across components/pages
+    <div>
+      <img src="../diagrams/design05/20-props.png" width=50% height=50% >
+    </div>
+
 ## Tickets Service
   <div>
     <img src="../diagrams/design05/17-tickets.png" width=50% height=50% >
@@ -123,13 +128,85 @@
   * Generate ticket create and ticket update events, and notify order service
   
   * Use Nats Streaming Server to implement the event bus
-    * To communicate with NATS, we will use a client library called **node-nats-streaming**
-    * Run the official 'nats-streaming' docker image in kubernetes.  Need to read the image's docs
-    * Pub/Sub pattern
+    * Run the official 'nats-streaming' docker image in kubernetes.  Need to read the image's [docs]
+    * To communicate with NATS, we will use a client library called **[node-nats-streaming]**([github-link])
     <div>
       <img src="../diagrams/design05/18-nats.png" width=50% height=50% >
     </div>
-   
+    * NATS Streaming stores all events in memory (default), flat files or in a MySQL/Postgres DB
+    * publisher and listener
+    <div>
+      <img src="../diagrams/design05/19-pubsub.png" width=50% height=50% >
+    </div>
+
+## Design Events interaction between services
+  * Goal: Deciding on what events to publish and what data they should contain; what other services should listen to this event
+  * Rule #1 - Make one service in charge of all aspects of a Resource.  Emit events whenever changing that data
+  * Rule #2 - If you don't know how the event will be used, publish all available data about the resource
+  * Rule #3 - If you do know how the event will be consumed (and don't expect it to change soon), publish only the required info
+  * Event design
+    <div>
+      <img src="../diagrams/design06/1-events.png" width=50% height=50% >
+    </div>
+
+    * Events published by Ticket service
+    <div>
+      <img src="../diagrams/design06/2-ticketevents.png" width=50% height=50% >
+    </div>
+    
+    * Events published by Order service
+      <div>
+        <img src="../diagrams/design06/3-orderevents1.png" width=50% height=50% >
+      </div>
+
+      <div>
+        <img src="../diagrams/design06/4-orderevents2.png" width=50% height=50% >
+      </div>
+
+    * Events published by Payment service
+    <div>
+      <img src="../diagrams/design06/5-paymentevents.png" width=50% height=50% >
+    </div>
+
+    * Events published by Expiration service
+    <div>
+      <img src="../diagrams/design06/6-expirationevents.png" width=50% height=50% >
+    </div>
+
+
+## Concurrency Issue
+* For any similar application, even for those scaling to some scope, we cannot avoid concurrency issue. For example, there might have a race condition for buyer and seller, one of them want to buy this order and another updates the ticket at almost the same time.
+    <div>
+      <img src="../diagrams/design06/7-race.png" width=30% height=30% >
+    </div>
+* How to solve it?
+  * Used optimistic concurrency control: Increment the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record
+  * Solve concurrency issue by keeping an order of events
+    <div>
+      <img src="../diagrams/design06/8-order.png" width=80% height=80% >
+    </div>
+
+  * Implementation: used **mongoose-update-if-current** to assist in (1) automatically updating version number before data is saved (2) Customizes the find-and-update operation (save) to look for the correct version and update the version
+    <div>
+      <img src="../diagrams/design06/9-mongoose.png" width=50% height=50% >
+    </div>
+  
+
+## Expiration Service
+* implementation: expiration service listens to order-created-events; when the event happens, it enqueues a job with Bull JS option(setting delay for the order expiration duration) and store it into Redis. It will dequeue after that duration of delay.
+    <div>
+      <img src="../diagrams/design06/10-expiration.png" width=50% height=50% >
+    </div>
+
+## Payment Service
+* 
+    <div>
+      <img src="../diagrams/design06/11-payment.png" width=50% height=50% >
+    </div>
+
+## CI/CD
+[to-do]   
+
 
 
 
@@ -157,3 +234,6 @@
 [current-user]:ticketing/common/src/middlewares/current-user.ts
 [app-js]: https://react.dev/learn/tutorial-tic-tac-toe
 [index-js]: https://react.dev/learn/tutorial-tic-tac-toe
+[node-nats-streaming]: https://www.npmjs.com/package/node-nats-streaming?activeTab=readme
+[docs]: https://hub.docker.com/_/nats-streaming
+[github-link]: https://github.com/nats-io/stan.js
