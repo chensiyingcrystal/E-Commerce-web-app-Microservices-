@@ -69,7 +69,7 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```sh
 kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<STRIPE_SECRET_KEY>
 ```
-3. Install NPM packages
+3. Run skaffold
 ```sh
 cd ticketing
 ```

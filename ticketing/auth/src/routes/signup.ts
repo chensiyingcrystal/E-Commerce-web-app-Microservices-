@@ -29,7 +29,7 @@ async (req: Request, res: Response) => {
     //save user to db
     await user.save();
 
-    //generate JWT
+    //generate JWT with payload and a private key to sign it
     const userJwt = jwt.sign({
         id: user.id,
         email: user.email

@@ -66,7 +66,7 @@ userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };
 
-//model: how to access
+//model: how to access a whole set of data in the database
 //create the model
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 //do typescript checking with user capsulated inside build user

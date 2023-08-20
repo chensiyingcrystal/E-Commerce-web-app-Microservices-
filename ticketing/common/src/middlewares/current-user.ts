@@ -1,5 +1,6 @@
+//A middleware to extract the JWT payload and set it on req.currentUser
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken'; //validate token or extract valid data from it
 
 interface UserPayload {
     id: string;
@@ -9,7 +10,7 @@ interface UserPayload {
 declare global {
     namespace Express {
         interface Request {
-            currentUser?: UserPayload;
+            currentUser?: UserPayload;//add additional property to this already existing Request type
         }
     }
 }

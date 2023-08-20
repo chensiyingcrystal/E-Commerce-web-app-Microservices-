@@ -1,61 +1,59 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v2beta29
 kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/*
+    - ./infra/k8s/*
 build:
   local:
     push: false
-  # googleCloudBuild:
-  #   projectId: ticketing-dev-372201
   artifacts:
-    # - image: us.gcr.io/ticketing-dev-372201/auth
-    - image: chensiyingcrystal/auth
-      context: auth
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: chensiyingcrystal/client
-      context: client
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.js'
-            dest: .
-    - image: chensiyingcrystal/tickets
-      context: tickets
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: chensiyingcrystal/orders
-      context: orders
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: chensiyingcrystal/expiration
-      context: expiration
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
-    - image: chensiyingcrystal/payments
-      context: payments
-      docker: 
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
+  - image: chensiyingcrystal/auth
+    context: auth
+    sync:
+      manual:
+      - src: src/**/*.ts
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+  - image: chensiyingcrystal/client
+    context: client
+    sync:
+      manual:
+      - src: '**/*.js'
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+  - image: chensiyingcrystal/tickets
+    context: tickets
+    sync:
+      manual:
+      - src: src/**/*.ts
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+  - image: chensiyingcrystal/orders
+    context: orders
+    sync:
+      manual:
+      - src: src/**/*.ts
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+  - image: chensiyingcrystal/expiration
+    context: expiration
+    sync:
+      manual:
+      - src: src/**/*.ts
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+  - image: chensiyingcrystal/payments
+    context: payments
+    sync:
+      manual:
+      - src: src/**/*.ts
+        dest: .
+    docker:
+      dockerfile: Dockerfile
+

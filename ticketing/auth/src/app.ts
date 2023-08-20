@@ -12,13 +12,13 @@ import { errorHandler } from '@crystaltickets/common';
 import { NotFoundError } from '@crystaltickets/common';
 
 const app = express();
-app.set('trust proxy', true); 
+app.set('trust proxy', true); //express trust traffic secured through ingress nginx proxy
 //use json middleware to parse json from incoming request
 //without json, we cannot use req.body
 app.use(json());
 app.use(cookieSession({
     signed: false, //ban signing
-    secure: process.env.NODE_ENV !== 'test' //require https connection
+    secure: process.env.NODE_ENV !== 'test' //require https connection //secure is true
 }));
 app.use(currentUserRouter);
 app.use(signinRouter);

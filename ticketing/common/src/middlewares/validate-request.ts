@@ -13,6 +13,7 @@ export const validateRequest = (
         throw new RequestValidationError(errors.array());
     }
 
+    //go to next middleware in the chain or the final route handler
     next();
 
 }

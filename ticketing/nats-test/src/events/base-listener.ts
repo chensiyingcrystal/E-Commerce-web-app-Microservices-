@@ -10,8 +10,11 @@ interface Event {
 export abstract class Listener<T extends Event> {
     //name of the channel this subscriber is listening to
     abstract subject: T['subject'];
+    //function to run when a message is received
     abstract onMessage(data: T['data'], msg: Message): void;
+    //name of the queue group this listener is listening to
     abstract queueGroupName: string;
+    //pre-initialized NATS client
     private client: Stan;
     //time for this subscriber to ack a message
     protected ackWait = 5 * 1000; //5s
