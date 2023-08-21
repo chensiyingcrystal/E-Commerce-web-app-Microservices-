@@ -133,6 +133,9 @@
     * Run the official 'nats-streaming' docker image in kubernetes.  Need to read the image's [docs]
     * To communicate with NATS, we will use a client library called **[node-nats-streaming]**([github-link])
     <div>
+      <img src="../diagrams/design05/19-nats.png" width=50% height=50% >
+    </div>
+    <div>
       <img src="../diagrams/design05/18-nats.png" width=50% height=50% >
     </div>
     * NATS Streaming stores all events in memory (default), flat files or in a MySQL/Postgres DB
@@ -188,7 +191,10 @@
 * How to solve it?
   * Solve concurrency issue by keeping an order of events
   * Used optimistic concurrency control: Increment the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record
- 
+  * example: 
+    <div>
+      <img src="../diagrams/design05/21-concurr.png" width=80% height=80% >
+    </div>
     <div>
       <img src="../diagrams/design06/8-order.png" width=80% height=80% >
     </div>
