@@ -31,6 +31,9 @@ A ticket exchange and resale application, enabling buyers and resellers to regis
 * Ticket Lock with timer during payment
     * "Lock" ticket for 15 minutes when user attempts to purchase it
     * No other buyer can purchase a ticket or seller can update it while being locked
+    
+### Demo
+https://drive.google.com/file/d/1XviEJmGRPvea7SAup_TaqEcRxZgH42I_/view?usp=sharing
 
 ### Built With
 Major frameworks/Libraries/Database/Tools that this application uses. 
