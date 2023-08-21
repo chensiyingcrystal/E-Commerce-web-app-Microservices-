@@ -147,8 +147,14 @@
       <img src="../diagrams/design05/19-pubsub.png" width=50% height=50% >
     </div>
 
+## Database replication
+* We want services to be loosely coupled. In order to reach that, we need to keep a replicate database inside some services. 
+    <div>
+      <img src="../diagrams/design05/22-databases.png" width=50% height=50% >
+    </div>
+
 ## Design Events interaction between services
-  * Goal: Deciding on what events to publish and what data they should contain; what other services should listen to this event
+  * Goal: Deciding on what events to publish and what data they should update; what other services should listen to this event
   * Rule #1 - Make one service in charge of all aspects of a Resource.  Emit events whenever changing that data
   * Rule #2 - If you don't know how the event will be used, publish all available data about the resource
   * Rule #3 - If you do know how the event will be consumed (and don't expect it to change soon), publish only the required info
@@ -182,6 +188,8 @@
     </div>
 
 
+
+
 ## Concurrency Issue
 * For any similar application, even for those scaling to some scope, we cannot avoid concurrency issue. For example, there might have a race condition for buyer and seller, one of them want to buy this order and another updates the ticket at almost the same time.
 * Another case is the user updates tickts several times; who comes first is vital to the last state of the ticket
@@ -199,14 +207,14 @@
       <img src="../diagrams/design06/8-order.png" width=80% height=80% >
     </div>
 
-  * Implementation: used **mongoose-update-if-current** to assist in (1) automatically updating version number before data is saved (2) Customizes the find-and-update operation (save) to look for the correct version and update the version
+  * Implementation: used **mongoose-update-if-current** to assist in (1) automatically updating version number before data is saved (2) Customizes the find-and-update operation (save) to look for the correct version(last_verstion = curr_version - 1) and update the version
     <div>
       <img src="../diagrams/design06/9-mongoose.png" width=50% height=50% >
     </div>
   
 
 ## Expiration Service
-* implementation: expiration service listens to order-created-events; when the event happens, it enqueues a job with Bull JS option(setting delay for the order expiration duration) and store it into Redis. It will dequeue after that duration of delay.
+* implementation: expiration service listens to order-created-events; when the event happens, it enqueues a job with Bull JS option(setting delay for the order expiration duration) and store it into Redis. After the timeout, the Bull JS & Redis will dequeue it.
     <div>
       <img src="../diagrams/design06/10-expiration.png" width=50% height=50% >
     </div>
