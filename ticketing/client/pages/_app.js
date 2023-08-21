@@ -13,7 +13,10 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
         </div>
         );
 };
-
+//app component is the place where components are gathered and each component is going to follow its template
+//each time the component is called to render, it will first call the App's getinitialPops function
+//if the app's getinitialPops function is called, the landing page's getinitialPops function will not be called. Thus, we need to call that manually
+//landing page's getinitialPops function need to get all tickets data so that user not registered can also see the home page with full list of tickets
 AppComponent.getInitialProps = async (appContext) => {
     const client = buildClient(appContext.ctx);
     const { data } = await client.get('/api/users/currentuser');

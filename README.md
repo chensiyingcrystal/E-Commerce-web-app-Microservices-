@@ -25,9 +25,7 @@ A ticket exchange and resale application, enabling buyers and resellers to regis
 * Authentication
 * Event bus design and implementation
 * Authenticated users can list an event ticket for resale
-* Athenticated user can update the tickets they listed
 * Authenticated users can buy tickets posted by others
-* Authenticated users can cancel the order they made
 * Ticket Lock with timer during payment
     * "Lock" ticket for 15 minutes when user attempts to purchase it
     * No other buyer can purchase a ticket or seller can update it while being locked

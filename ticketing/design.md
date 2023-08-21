@@ -57,7 +57,7 @@
 </div>
 
 * Use JWT to authenticate users for their follow-up requests
-  * JWT payload contains user data encrypted with a JWT key(advantage over session: make server stateless)
+  * JWT payload contains user data(account & password) encrypted with a JWT key(advantage over session: make server stateless)
   <div>
     <img src="../diagrams/design05/10-jwt.png" width=40% height=40% >
   </div>
@@ -73,6 +73,8 @@
     <img src="../diagrams/design05/9-otherservices-auth.png" width=80% height=80% >
   </div>
   * require-auth and current-user logic:
+  * require-auth: check if the request having a JWT with it
+  * current-user: decode the JWT inside the request and return the user data
   <div>
     <img src="../diagrams/design05/12-requireauth.png" width=50% height=50% >
   </div>
@@ -135,6 +137,9 @@
     </div>
     * NATS Streaming stores all events in memory (default), flat files or in a MySQL/Postgres DB
     * publisher and listener
+      * publisher: publish events to a specific channel(subject)
+      * listener: listen to specific channels and respond to events(onMessage function); queueGroup is a way to send events to either listener in this queueGroup to avoid sending same events multiple instances of same service; setting listener subscription options(e.g. setDeliverAllAvailable is 
+      a way to deliver all available events of this channel in NATS the first time this listener receiving events)
     <div>
       <img src="../diagrams/design05/19-pubsub.png" width=50% height=50% >
     </div>
@@ -176,12 +181,14 @@
 
 ## Concurrency Issue
 * For any similar application, even for those scaling to some scope, we cannot avoid concurrency issue. For example, there might have a race condition for buyer and seller, one of them want to buy this order and another updates the ticket at almost the same time.
+* Another case is the user updates tickts several times; who comes first is vital to the last state of the ticket
     <div>
       <img src="../diagrams/design06/7-race.png" width=30% height=30% >
     </div>
 * How to solve it?
-  * Used optimistic concurrency control: Increment the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record
   * Solve concurrency issue by keeping an order of events
+  * Used optimistic concurrency control: Increment the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record
+ 
     <div>
       <img src="../diagrams/design06/8-order.png" width=80% height=80% >
     </div>
